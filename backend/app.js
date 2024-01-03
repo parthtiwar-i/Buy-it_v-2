@@ -8,9 +8,11 @@ app.use(cookieParser());
 //route import
 const product = require("./routes/productRoute");
 const user = require("./routes/userRoute");
+const order = require("./routes/orderRoute");
 //using the routes as middeware as express is a middleware lib basically
-app.use("/api/v1", product);
-app.use("/api/v1", user);
+app.use("/api/v1", product); // product routes
+app.use("/api/v1", user); //user routes
+app.use("/api/v1", order); //order routes
 
 //error handling middleware
 app.use(errorMiddleware);

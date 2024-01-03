@@ -31,4 +31,5 @@ router
   .route("/reviews")
   .get(getAllReviews)
   .delete(isAuthenticatedUser, deleteReviews);
+
 module.exports = router;

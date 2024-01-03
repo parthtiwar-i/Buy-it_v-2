@@ -42,7 +42,7 @@ const orderSchema = mongoose.Schema({
         required: true,
       },
       image: {
-        tyoe: String,
+        type: String,
         required: true,
       },
       product: {
