@@ -1,8 +1,12 @@
 * {
     box-sizing: border-box;
   }
+  body{
+    margin: 0;
+    padding: 0;
+  }
   
-  html,
+  /* html,
   body {
     height: 100%;
   }
@@ -11,8 +15,54 @@
     font-family: "Euclid Circular A", Poppins;
     color: #f9f9f9;
     background: #1e1b1f;
+  } */
+
+  .hamburger{
+    background-color: #60bfc1;
+    display: flex;
+    justify-content: space-between;
+    /* padding: 0 2rem; */
+  } 
+  .logo{
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .logo > img{
+    width: 13vmax;
+    /* margin-right: 4rem; */
+  }
+
+
+  .hamburger_function{
+    display: none;
   }
   
+  .navigate{
+    width: 30%;
+    font-size: 20px;
+    font-family: sans-serif;
+    padding: 0 0 0 3rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+ 
+  }
+  .gadget{
+    width: 30%;
+    padding: 0 1rem;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  
+  .nav_icons{
+    width:  2vmax;
+    height: 2vmax;
+  }
+  
+
   button {
     border: 0;
     padding: 0;
@@ -21,7 +71,9 @@
     outline: none;
   }
   
-  .burger,
+  .burger{
+    position: sticky;
+  }
   .menu {
     position: fixed;
   }
@@ -32,8 +84,8 @@
     left: 0;
     display: grid;
     place-items: center;
-    width: 88px;
-    height: 88px;
+    width: 60px;
+    height: 60px;
     background-image: url("../../../assets/openMenu.svg");
     background-repeat: no-repeat;
     background-position: center;
@@ -126,21 +178,11 @@
     animation: appear 0.35s backwards;
   }
   
-  .page {
-    padding: 100px 15%;
-    transition: 0.6s;
+  @media screen and (max-width : 1000px) {
+    .hamburger_function{
+      display: inline-block;
+    }
+    .navigate{
+      display: none;
+    }
   }
-  
-  .page.open {
-    filter: blur(10px);
-  }
-  
-  .page h2 {
-    font-weight: 400;
-  }
-  
-  .page p {
-    line-height: 1.66;
-    opacity: 0.6;
-  }
-  
