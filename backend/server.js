@@ -14,7 +14,7 @@ dotenv.config({ path: "backend/config/config.env" });
 //connection to database
 connectDatabase();
 const server = app.listen(process.env.PORT, () => {
-  console.log(`server in running on port : ${process.env.PORT}`);
+  console.log(`server in running on port a : ${process.env.PORT}`);
 });
 
 //handling unhandeled promise rejection error

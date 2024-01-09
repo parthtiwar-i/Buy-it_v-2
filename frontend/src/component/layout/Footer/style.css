@@ -22,7 +22,7 @@ footer{
     align-items: center;
 }
 .left_footer > h1{
-    font-size: 2rem;
+    font-size: 2vmax;
 }
 .android,.ios{
     width: 10vmax;

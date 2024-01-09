@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.HomePage {
+  color: white;
+  min-height: 100vh;
+  background: linear-gradient(45deg, #0f2027, #2c5364);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.HomePage > h1 {
+  font-size: 5vmax;
+}
+.HomePage > p {
+  font-size: 2vmax;
+}
+.HomePage > a {
+  margin: 2rem 0;
+  text-decoration: none;
+}
+.HomePage > a > button {
+  text-decoration: none;
+  font-size: 1rem;
+  display: flex;
+  padding: 0.5rem 2rem;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid white;
+  border-radius: 5px;
+  padding-inline-start: 1rem 2rem;
+}
+.HomePage::after {
+  clip-path: polygon(0 89%, 100% 65%, 100% 100%, 0 100%);
+  content: "";
+  width: 100%;
+  height: 101vh;
+  position: absolute;
+  background: white;
+}
+
+.product_heading {
+  color: gray;
+  margin: 1rem auto;
+  padding: 1rem;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  border-bottom: 2px solid grey;
+  width: 30vmax;
+}
+.container {
+  margin: 2vmax auto ;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 80vw;
+}
+
+.product_card {
+  color: #575b5c;
+  width: 14vmax;
+  margin: 2vmax;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+  transition: all 0.5s;
+  padding-bottom: 0.5vmax;
+}
+.product_card > img {
+  width: 14vmax;
+}
+.product_card > div {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.product_card > div > span {
+  margin: 0.5vmax;
+  font: 300 0.7vmax "roboto";
+}
+.product_card > p {
+  margin: 1vmax 0;
+  margin-bottom: 0;
+  font-family: "roboto";
+}
+.product_card > span {
+  margin: 0.5vmax, 0.5vmax;
+  font-size: 1.5vmax;
+  color: tomato;
+}
+.product_card:hover {
+  box-shadow: 0 0 5px rgba(15, 15, 15, 0.26);
+  transform: translateY(-1vmax);
+  scale: 1.1;
+}
+
+@media screen  and (max-width : 600px) {
+  .product_card> span{
+    font-size: 2vmax;
+  }
+  .product_card > div > span{
+    margin: 0 .05vmax;
+    font: 300 1.5vmax "roboto" ;
+  }
+}

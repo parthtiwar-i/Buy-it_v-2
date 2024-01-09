@@ -21,7 +21,7 @@ function Footer() {
         </div>
         <div className="mid_footer">
           <img src={logo} alt="" />
-          <p>Get what you deserve and what you crave! </p>
+          <p>Get what  you crave for! </p>
           <p>Copywrite 2024 &copy; parthtiwar_i</p>
         </div>
         <div className="right_footer">
