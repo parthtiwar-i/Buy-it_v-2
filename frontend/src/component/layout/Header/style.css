@@ -5,6 +5,10 @@
     margin: 0;
     padding: 0;
   }
+  a{
+    text-decoration: none;
+    color: black;
+  }
   /* body {
     font-family: "Euclid Circular A", Poppins;
     color: #f9f9f9;
@@ -181,5 +185,12 @@
     }
     .navigate{
       display: none;
+    }
+    .gadget{
+      padding: 0 0vmax;
+    }
+    .nav_icons{
+      width: 3vmax;
+      height: 3vmax;
     }
   }

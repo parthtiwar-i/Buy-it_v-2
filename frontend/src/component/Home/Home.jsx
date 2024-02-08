@@ -1,10 +1,10 @@
 import React, { Fragment, useEffect } from "react";
 import "./home.css";
-import Product from "./Product";
+import ProductCard from "./ProductCard";
 import MouseIcon from "@mui/icons-material/MouseOutlined";
 import MetaData from "../layout/MetaData";
 import { useSelector, useDispatch } from "react-redux";
-import { getProduct } from "../../actions/productActions";
+import { clearError, getProduct } from "../../actions/productActions";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
 
@@ -17,7 +17,8 @@ const Home = () => {
 
   useEffect(() => {
     if (error) {
-      return alert.error(error);
+      alert.error(error);
+      dispatch(clearError())
     }
     dispatch(getProduct());
   }, [dispatch, error, alert]);
@@ -42,7 +43,7 @@ const Home = () => {
           <div className="container" id="container">
             {products &&
               products.map((product) => (
-                <Product product={product} key={product._id} />
+                <ProductCard product={product} key={product._id} />
               ))}
           </div>
         </>

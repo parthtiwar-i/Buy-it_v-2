@@ -37,6 +37,11 @@ const userSchema = mongoose.Schema({
     type: String,
     default: "user",
   },
+  CreatedAt: {
+    type: Date,
+    default: Date.now,
+  },
+
   resetPasswordToken: String,
   resetPasswordExpire: Date,
 });
@@ -68,14 +73,14 @@ userSchema.methods.comparePassword = async function (enteredPassword) {
 userSchema.methods.getResetPasswordToken = function () {
   const resetToken = crypto.randomBytes(20).toString("hex"); // generated random bits 20 > 2^20 ans in hexadecimal
 
-  //create hash form that resetToken 
+  //create hash form that resetToken
   this.resetPasswordToken = crypto
-    .createHash("sha256") //its an encryption algo so encode in this 
-    .update(resetToken) //with that algo hash this resetaToken 
-    .digest("hex");// show in hexadecimal 
+    .createHash("sha256") //its an encryption algo so encode in this
+    .update(resetToken) //with that algo hash this resetaToken
+    .digest("hex"); // show in hexadecimal
 
   this.resetPasswordExpire = Date.now() + 15 * 60 * 1000;
-  
+
   return resetToken;
 };
 

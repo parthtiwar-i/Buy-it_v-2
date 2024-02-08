@@ -1,8 +1,12 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const fileUploder = require("express-fileupload");
 const app = express();
 const errorMiddleware = require("./middleware/error");
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(fileUploder());
 app.use(cookieParser());
 
 //route import

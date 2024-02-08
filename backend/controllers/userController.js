@@ -4,18 +4,25 @@ const User = require("../model/userModel");
 const sendToken = require("../utils/JWTToken");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
+const cloudinary = require("cloudinary");
 
 //REGISTER A USER
 
 exports.registerUser = catchAsyncError(async (req, res, next) => {
+  const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+    folder: "avatars",
+    width: 150,
+    crop: "scale",
+  });
+
   const { name, email, password } = req.body;
   const user = await User.create({
     name,
     email,
     password,
     avatar: {
-      public_id: "sample id example.id",
-      image_url: "profile pictur example.url",
+      public_id: myCloud.public_id,
+      image_url: myCloud.secure_url,
     },
   });
 
@@ -248,14 +255,15 @@ exports.deleteUser = catchAsyncError(async (req, res, next) => {
   const user = await User.findById(req.params.id);
   // will add avatars later using cloudary for deleting
   if (!user) {
-    return next(new ErrorHandler("User doesnt exist with id " + req.params.id , 400));
+    return next(
+      new ErrorHandler("User doesnt exist with id " + req.params.id, 400)
+    );
   }
   console.log(user);
   await user.deleteOne();
 
   res.status(200).json({
     success: true,
-    message : "user deleted successfully"
+    message: "user deleted successfully",
   });
 });
-
