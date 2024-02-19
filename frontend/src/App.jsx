@@ -11,17 +11,16 @@ import { useEffect } from "react";
 import store from "./store.js";
 import { loadUser } from "./actions/userActions.js";
 import { useSelector } from "react-redux";
-import UserOptions from "./component/layout/Header/UserOptions"
+import UserOptions from "./component/layout/Header/UserOptions";
 import Profile from "./component/user/Profile";
 import ProtectedRoute from "./component/Route/ProtectedRoute";
-import UpdateProfile from "./component/user/UpdateProfile"
-
+import UpdateProfile from "./component/user/UpdateProfile";
+import UpdatePassword from "./component/user/UpdatePassword.jsx";
 
 function App() {
   const { isAuthenticated, user } = useSelector((state) => state.user);
   useEffect(() => {
-      store.dispatch(loadUser());
-    
+    store.dispatch(loadUser());
   }, []);
 
   return (
@@ -35,10 +34,10 @@ function App() {
         <Route path="/products/:keyword" element={<Products />} />
         <Route path="/search" element={<Search />} />
         <Route path="/login" element={<LoginSignUp />} />
-        <Route element={<ProtectedRoute/>}  >
-          <Route element={<Profile/>}  path="/account" />
-          <Route element={<UpdateProfile/>}  path="/me/update" />
-
+        <Route element={<ProtectedRoute />}>
+          <Route element={<Profile />} path="/account" />
+          <Route element={<UpdateProfile />} path="/me/update" />
+          <Route element={<UpdatePassword />} path="/password/update" />
         </Route>
       </Routes>
       <Footer />

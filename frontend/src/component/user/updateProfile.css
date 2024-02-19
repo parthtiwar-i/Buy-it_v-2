@@ -1,0 +1,142 @@
+.updateProfileContainer {
+  width: 100vw;
+  height: 100vh;
+  max-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  background-color: rgb(231, 231, 231);
+  top: 0;
+  left: 0;
+}
+.updateProfileBox {
+  background-color: white;
+  width: 30vmax;
+  height: 70vh;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.updateProfileHeading {
+  margin: 0 auto;
+  color: grey;
+  border-bottom: 1.5px solid grey;
+  width: max-content;
+  padding: 1.5vmax;
+}
+.updateProfileBox > div > button {
+  background-color: #0ee499;
+  height: 3px;
+  width: 50%;
+  border: none;
+  transition: all 0.5s;
+  border-radius: 5px;
+}
+.updateProfileForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding: 2vmax;
+  height: 70%;
+  justify-content: space-between;
+  transition: all 0.5s;
+}
+/* .updateProfileForm {
+    transform: translateY(-100%) translateX(-100%);
+  } */
+
+.updateProfileForm > div {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 1vmax 0;
+}
+.updateProfileForm > div > input {
+  padding: 1vmax 4vmax;
+  padding-right: 1vmax;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.548);
+  border-radius: 4px;
+  font: 300 1vmax cursive;
+  outline: none;
+}
+.updateProfileForm > div > svg {
+  position: absolute;
+  transform: translateX(1vmax);
+  font-size: 1.6vmax;
+  color: rgba(0, 0, 0, 0.614);
+}
+
+#updateProfileImage > img {
+  width: 3vmax;
+  border-radius: 100%;
+}
+#updateProfileImage > input {
+  display: flex;
+  padding: 0;
+}
+
+#updateProfileImage > input::file-selector-button {
+  cursor: pointer;
+  width: 100%;
+  height: 5vh;
+  margin: 0;
+  border: none;
+  transition: all 0.5s;
+  font: 300 1vmax cursive;
+  padding: 0 1vmax;
+  color: rgba(0, 0, 0, 0.527);
+  background-color: rgb(231, 231, 231);
+}
+
+.updateProfileBtn {
+  width: 100%;
+  border: none;
+  background-color: #0ee499a5;
+  padding: 0.8vmax;
+  color: white;
+  cursor: pointer;
+  transition: all 0.5s;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.436);
+  font: 300 1vmax cursive;
+  outline: none;
+}
+
+.updateProfileBtn:hover {
+  background-color: #0ee499;
+}
+
+@media screen and (max-width: 600px) {
+  .updateProfileContainer {
+    background-color: #fff;
+  }
+  .updateProfileBox {
+    width: 100%;
+    height: 78%;
+  }
+  .updateProfileForm {
+    padding: 5vmax;
+  }
+  .updateProfileForm > div > input {
+    padding: 2vmax 5vmax;
+    font: 300 2.5vmax cursive;
+  }
+  .updateProfileForm > div > svg {
+    font-size: 3vmax;
+  }
+  #updateProfileImage > img {
+    width: 5vmax;
+  }
+  #updateProfileImage > input::file-selector-button {
+    height: 6vh;
+    font: 400 2vmax cursive;
+  }
+  .updateProfileBtn {
+    padding: 2vmax 0;
+    font: 500 2.5vmax cursive;
+  }
+}

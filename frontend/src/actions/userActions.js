@@ -14,8 +14,10 @@ import {
   LOAD_USER_FAIL,
   UPDATE_PROFILE_FAIL,
   UPDATE_PROFILE_REQUEST,
-  UPDATE_PROFILE_RESET,
   UPDATE_PROFILE_SUCCESS,
+  UPDATE_PASSWORD_FAIL,
+  UPDATE_PASSWORD_REQUEST,
+  UPDATE_PASSWORD_SUCCESS,
 } from "../constants/userConstants";
 
 //login user
@@ -40,7 +42,7 @@ export const login = (email, password) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: LOGIN_FAIL,
-      payload: err.message,
+      payload: err.response.data.error,
     });
   }
 };
@@ -61,9 +63,10 @@ export const register = (userData) => async (dispatch) => {
       payload: data.user,
     });
   } catch (err) {
+    console.log(err);
     dispatch({
       type: REGISTER_USER_FAIL,
-      payload: err.message,
+      payload: err.response.data.error,
     });
   }
 };
@@ -84,7 +87,7 @@ export const loadUser = () => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: LOAD_USER_FAIL,
-      payload: err.message,
+      payload: err.response.data.error,
     });
   }
 };
@@ -101,7 +104,7 @@ export const logoutUser = () => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: LOGOUT_USER_FAIL,
-      payload: err.message,
+      payload: err.response.data.error,
     });
   }
 };
@@ -120,12 +123,36 @@ export const updateProfile = (userData) => async (dispatch) => {
 
     dispatch({
       type: UPDATE_PROFILE_SUCCESS,
-      payload: data.user,
+      payload: data.success,
     });
   } catch (err) {
     dispatch({
       type: UPDATE_PROFILE_FAIL,
-      payload: err.message,
+      payload: err.response.data.error,
+    });
+  }
+};
+
+
+// Update  Users Password
+export const updatePassword = (password) => async (dispatch) => {
+  try {
+    dispatch({
+      type: UPDATE_PASSWORD_REQUEST,
+    });
+
+    const config = { headers: { "Content-Type": "application/json" } };
+
+    const { data } = await axios.put(`/api/v1/password/update`, password, config);
+    
+    dispatch({
+      type: UPDATE_PASSWORD_SUCCESS,
+      payload: data.success,
+    });
+  } catch (err) {
+    dispatch({
+      type: UPDATE_PASSWORD_FAIL,
+      payload: err.response.data.error,
     });
   }
 };

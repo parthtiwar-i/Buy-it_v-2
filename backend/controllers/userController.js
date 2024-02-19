@@ -35,7 +35,7 @@ exports.loginUser = catchAsyncError(async (req, res, next) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
-    return next(new ErrorHandler("Please entr email and password", 400));
+    return next(new ErrorHandler("Please enter email and password", 400));
   }
 
   const user = await User.findOne({ email }).select("+password");
@@ -47,7 +47,7 @@ exports.loginUser = catchAsyncError(async (req, res, next) => {
   const isPasswordMatched = await user.comparePassword(password);
 
   if (!isPasswordMatched) {
-    return next(new ErrorHandler("Invalid password", 401));
+    return next(new ErrorHandler("Invalid email or password", 401));
   }
 
   sendToken(user, 200, res);
@@ -189,7 +189,22 @@ exports.updateProfile = catchAsyncError(async (req, res, next) => {
     email: req.body.email,
   };
 
-  // will add avatars later using cloudary
+  if (req.body.avatar != " ") {
+    const user = await User.findById(req.user.id);
+    imageId = user.avatar.public_id;
+    await cloudinary.v2.uploader.destroy(imageId);
+
+    const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
+      folder: "avatars",
+      width: 150,
+      crop: "scale",
+    });
+
+    newUserData.avatar = {
+      public_id: myCloud.public_id,
+      image_url: myCloud.secure_url,
+    };
+  }
 
   const user = await User.findByIdAndUpdate(req.user.id, newUserData, {
     new: true,

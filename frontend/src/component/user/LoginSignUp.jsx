@@ -36,7 +36,7 @@ const LoginSignUp = () => {
   const loginSubmit = (e) => {
     e.preventDefault();
     dispatch(login(loginEmail, loginPassword));
-    navigate("/");
+    // navigate("/");
   };
 
   const registerSubmit = (e) => {
