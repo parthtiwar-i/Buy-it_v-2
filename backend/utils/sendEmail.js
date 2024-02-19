@@ -17,7 +17,7 @@ const sendEmail = async function (options) {
     oauth2Client.getAccessToken((err, token) => {
       if (err) {
         console.log(err);
-        reject("Failed to create access token :", err || token);
+        reject("Failed to create access token -", err || token);
       }
       resolve(token);
     });

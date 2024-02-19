@@ -19,6 +19,12 @@ import {
   UPDATE_PASSWORD_REQUEST,
   UPDATE_PASSWORD_RESET,
   UPDATE_PASSWORD_SUCCESS,
+  FORGOT_PASSWORD_REQUEST,
+  FORGOT_PASSWORD_SUCCESS,
+  FORGOT_PASSWORD_FAIL,
+  RESET_PASSWORD_REQUEST,
+  RESET_PASSWORD_FAIL,
+  RESET_PASSWORD_SUCCESS,
 } from "../constants/userConstants";
 
 export const userReducer = (state = { user: {} }, action) => {
@@ -60,7 +66,7 @@ export const userReducer = (state = { user: {} }, action) => {
         loading: false,
         isAuthenticated: false,
         user: null,
-        error: action.payload, // hadrd coded error message update it later
+        error: action.payload,
       };
     case LOGOUT_USER_FAIL:
       return {
@@ -77,6 +83,8 @@ export const userReducer = (state = { user: {} }, action) => {
       return state;
   }
 };
+
+//UPDATE PROFILE REDUCER
 
 export const profileReducer = (state = {}, action) => {
   switch (action.type) {
@@ -106,6 +114,47 @@ export const profileReducer = (state = {}, action) => {
       return {
         ...state,
         isUpdated: false,
+      };
+    case CLEAR_ERROR:
+      return {
+        ...state,
+        error: null,
+      };
+    default:
+      return state;
+  }
+};
+
+//pasword reducer
+
+export const forgotPasswordReducer = (state = {}, action) => {
+  switch (action.type) {
+    case FORGOT_PASSWORD_REQUEST:
+      case RESET_PASSWORD_REQUEST:
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case FORGOT_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        message: action.payload,
+      };
+      
+    case RESET_PASSWORD_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        success: action.payload,
+      };
+    case FORGOT_PASSWORD_FAIL:
+      case RESET_PASSWORD_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
       };
     case CLEAR_ERROR:
       return {

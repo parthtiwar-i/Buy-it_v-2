@@ -6,13 +6,14 @@ import {
   productDetailsReducer,
   productReducer,
 } from "./reducers/productReducer";
-import { profileReducer, userReducer } from "./reducers/userReducer";
+import { forgotPasswordReducer, profileReducer, userReducer } from "./reducers/userReducer";
 
 const reducers = combineReducers({
   products: productReducer,
   productDetails: productDetailsReducer,
   user: userReducer,
   profile: profileReducer,
+  forgotPassword : forgotPasswordReducer
 });
 const initialState = {};
 const middleware = [thunk];
