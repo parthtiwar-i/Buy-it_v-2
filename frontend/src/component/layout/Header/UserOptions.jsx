@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { logoutUser } from "../../../actions/userActions";
 
-
 const UserOptions = () => {
   const alert = useAlert();
   const dispatch = useDispatch();
@@ -36,7 +35,7 @@ const UserOptions = () => {
   const options = [
     { icon: <PersonIcon />, name: "Profile", func: account },
     { icon: <ListAltIcon />, name: "Orders", func: orders },
-    { icon: <ExitToAppIcon />, name: "Log Out", func: logout },
+    { icon: <ExitToAppIcon />, name: "LogOut", func: logout },
   ];
   if (user.role === "admin") {
     options.unshift({
@@ -48,15 +47,15 @@ const UserOptions = () => {
 
   return (
     <Fragment>
-        <Backdrop open= {open}  />
+      <Backdrop open={open} />
       <SpeedDial
-      className="speedDial"
+        className="speedDial"
         ariaLabel={"speed dial tooltip example"}
         onClose={() => setOpen(false)}
         onOpen={() => setOpen(true)}
         open={open}
         // direction="top"
-        tooltipplacement = "top"
+        tooltipplacement="top"
         icon={
           <img
             className="speedDialIcon"
@@ -69,10 +68,11 @@ const UserOptions = () => {
       >
         {options.map((item) => (
           <SpeedDialAction
-          key={item.name}
+            key={item.name}
             icon={item.icon}
             tooltipTitle={item.name}
             onClick={item.func}
+            tooltipOpen={window.innerWidth < 600 ? true : false}
           />
         ))}
       </SpeedDial>

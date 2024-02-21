@@ -9,6 +9,7 @@ import ReviewCard from "./reviewCard";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
 import MetaData from "../layout/MetaData";
+import { addItemToCart } from "../../actions/cartActions";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -17,13 +18,32 @@ const ProductDetails = () => {
   const { product, loading, error } = useSelector(
     (state) => state.productDetails
   );
+  const [quantity, setQuantity] = useState(1);
+  const increaseQuantity = () => {
+    let qty = parseInt(quantity) + 1;
+    if (qty > product.stock) {
+      setQuantity(product.stock);
+    } else setQuantity(qty);
+  };
+  const decreaseQuantity = () => {
+    let qty = parseInt(quantity) - 1;
+    if (qty < 1) {
+      setQuantity(1);
+    } else setQuantity(qty);
+  };
+
+  const handleAddToCart = () => {
+    dispatch(addItemToCart(product._id, quantity));
+    alert.success("Item Added to cart");
+  };
+
   useEffect(() => {
     if (error) {
       alert.error(error);
       dispatch(clearError);
     }
     dispatch(getProductDetails(id));
-  }, [dispatch, id, error , alert]);
+  }, [dispatch, id, error, alert]);
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -46,7 +66,7 @@ const ProductDetails = () => {
         <Loader />
       ) : (
         <Fragment>
-          <MetaData title={`${product.name} --BuyIt`}/>
+          <MetaData title={`${product.name} --BuyIt`} />
           <div className="productDetails">
             <div className="carouselContainer">
               <Carousel
@@ -99,11 +119,11 @@ const ProductDetails = () => {
                 <h1>{`₹${product.price}`}</h1>
                 <div className="detailBlock-3-1">
                   <div className="detailBlock-3-1-1">
-                    <button>-</button>
-                    <input type="number" defaultValue="1" />
-                    <button>+</button>
+                    <button onClick={decreaseQuantity}>-</button>
+                    <input type="number" readOnly value={quantity} />
+                    <button onClick={increaseQuantity}>+</button>
                   </div>
-                  <button>Add To Cart</button>
+                  <button onClick={handleAddToCart}>Add To Cart</button>
                 </div>
                 <p>
                   Status :

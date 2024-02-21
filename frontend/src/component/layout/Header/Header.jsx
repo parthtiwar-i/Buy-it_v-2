@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import "./style.css";
 import { Outlet, useNavigate, Link } from "react-router-dom";
 import logo from "./assets/by-logo-white.svg";
-import search from "./assets/search_icon.png";
-import cart from "./assets/shopping-carts.png";
 import user from "./assets/user_acc.png";
+import { useSelector } from "react-redux";
+import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
+import SearchIcon from "@mui/icons-material/Search";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 const links = [
   { link: "/", name: "Home" },
   { link: "/products", name: "Products" },
@@ -13,6 +15,8 @@ const links = [
 ];
 
 const Header = () => {
+  const iconSize = window.innerWidth < 600 ? "small" : "large";
+  const { cartItems } = useSelector((state) => state.cart);
   const navigate = useNavigate();
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -67,11 +71,14 @@ const Header = () => {
         </div>
         <div className="gadget">
           <Link to={"/search"}>
-            <img className="nav_icons" src={search} alt="" />
+            <SearchIcon fontSize={iconSize} />
           </Link>
-          <img className="nav_icons" src={cart} alt="" />
+          <Link to={"/cart"}>
+            <ShoppingCartRoundedIcon fontSize={iconSize} style={{color : cartItems.length == 0 ? "black" : "lightblue"}} />
+            <span>{cartItems.length}</span>
+          </Link>
           <Link to={"/login"}>
-          <img className="nav_icons" src={user} alt="" />
+            <AccountCircleIcon fontSize={iconSize} />
           </Link>
         </div>
       </div>

@@ -1,0 +1,109 @@
+.shippingContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  max-width: 100%;
+}
+.shippingBox {
+  padding-top: 0.5vmax;
+  height: 100vh;
+  width: 25vw;
+  overflow: hidden;
+  background-color: #fff;
+  box-sizing: border-box;
+}
+.shippingHeading {
+  text-align: center;
+  color: rgba(0, 0, 0, 0.753);
+  padding: 1.3vmax;
+  font: 300 2.5vmax italic;
+  /* width: 50%; */
+  margin: auto;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.313);
+}
+.shippingForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  padding: 1vmax 2vmax;
+  justify-content: space-evenly;
+  height: 85%;
+  transition: all 0.5s;
+}
+.shippingForm > div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.shippingForm > div > input,
+.shippingForm > div > select {
+  padding: 1vmax 4vmax;
+  padding-right: 1vmax;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.548);
+  border-radius: 4px;
+  font: 300 1.2vmax cursive;
+  outline: none;
+}
+.shippingForm > div > svg {
+  position: absolute;
+  transform: translateX(1vmax);
+  font-size: 1.6vmax;
+  color: rgba(0, 0, 0, 0.614);
+}
+
+.shippingBtn {
+  margin: 1vmax 0;
+  width: 100%;
+  border: none;
+  background-color: #0ee499a5;
+  padding: 0.8vmax;
+  color: white;
+  cursor: pointer;
+  transition: all 0.5s;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.436);
+  font: 300 1vmax cursive;
+  outline: none;
+}
+.shippingBtn:hover {
+  background-color: #0ee499;
+}
+
+.stepper{
+  padding-top: 10vmax ;
+}
+
+@media screen and (max-width: 600px) {
+  .shippingContainer {
+    background-color: #fff;
+  }
+  .shippingBox {
+    width: 100%;
+    height: 100vh;
+  }
+  .shippingHeading{
+    padding-top: 10vmax;
+    width: 50%;
+    font: 400 3.5vmax italic;
+  }
+  .shippingForm {
+    padding: 5vmax;
+  }
+  .shippingForm > div > input,
+  .shippingForm > div > select {
+    padding: 2vmax 5vmax;
+    font: 300 2.5vmax cursive;
+  }
+  .shippingForm > div > svg {
+    font-size: 3vmax;
+  }
+  .shippingBtn {
+    padding: 2vmax 0;
+    font: 500 2.5vmax cursive;
+  }
+}

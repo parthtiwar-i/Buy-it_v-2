@@ -1,0 +1,185 @@
+.stepper {
+  padding-top: 10vmax;
+}
+
+.confirmOrderPage {
+  height: 100vh;
+  background: white;
+  display: grid;
+  grid-template-columns: 6fr 3fr;
+}
+.confirmOrderPage > div:last-child {
+  border-left: 1px solid rgba(0, 0, 0, 0.514);
+}
+.confirmShippingArea {
+  padding: 5vmax;
+  padding-bottom: 0%;
+}
+.confirmShippingArea > p,
+.confirmCartItems > p {
+  font: 400 1.8vmax italic;
+}
+.confirmShipingAreaBox,
+.confirmCartItemContainer {
+  margin: 2vmax;
+}
+.confirmShippingAreaBox > div {
+  display: flex;
+  margin: 1vmax 0;
+}
+.confirmShippingAreaBox > div > p {
+  font: 400 1.3vmax italic;
+  color: black;
+}
+.confirmShippingAreaBox > div > span {
+  margin: 0 1vmax;
+  font: 400 1.3vmax italic;
+  color: rgba(0, 0, 0, 0.623);
+}
+.confirmCartItems {
+  padding: 2vmax 5vmax 5vmax 5vmax;
+}
+.confirmCartItemsContainer {
+  max-height: 20vmax;
+  overflow-y: auto;
+}
+.confirmCartItemsContainer > div {
+  font: 400 1vmax italic;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 2vmax 0;
+}
+.confirmCartItemsContainer > div > img {
+  width: 3vmax;
+}
+.confirmCartItemsContainer > div > a {
+  color: #575757;
+  text-decoration: none;
+  width: 60%;
+}
+.confirmCartItemsContainer > div > span {
+  font: 100 1vmax italic;
+  color: lightslategray;
+}
+.orderSummary {
+  padding: 7vmax;
+}
+.orderSummary > p {
+  text-align: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.534);
+  font: 400 1.8vmax italic;
+  box-sizing: border-box;
+  padding: 1vmax;
+  width: 100%;
+  margin: auto;
+}
+.orderSummary > div > div {
+  display: flex;
+  justify-content: space-between;
+  font: 300 1vmax italic;
+  margin: 2vmax 0;
+}
+.orderSummary > div > div > p,
+.orderSummaryTotal > p,
+.orderSummaryTotal > span {
+  font: 400 1.2vmax italic;
+}
+.orderSummary > div > div > span {
+  color: rgba(0, 0, 0, 0.614);
+  font: 400 1.2vmax italic;
+}
+.orderSummaryTotal {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgba(0, 0, 0, 0.642);
+  padding: 2vmax 0;
+  font: 300 1vmax italic;
+}
+.orderSummary > button {
+  margin: 1vmax 0;
+  width: 100%;
+  border: none;
+  background-color: #0ee499a5;
+  padding: 0.8vmax;
+  color: white;
+  cursor: pointer;
+  transition: all 0.5s;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.436);
+  font: 300 1vmax cursive;
+  outline: none;
+}
+.orderSummary > button:hover {
+  background-color: #0ee499;
+}
+
+@media screen and (max-width : 650px) {
+    .confirmOrderPage{
+        height: unset;
+        grid-template-columns: 1fr;
+    }
+    .confirmOrderPage > div:last-child{
+        border-left: none;
+        border-top: 2px solid rgba(0, 0, 0, 0.637);
+    }
+    .confirmShippingArea > p{
+        font: 300 6vw italic;
+    }
+    .confirmShippingAreaBox > div {
+        display: flex;
+        margin: 6vw 0;
+    }
+    .confirmShippingAreaBox > div > p{
+        font: 400 4vw italic;
+    }
+    .confirmShippingAreaBox > div >span{
+        font: 100 4vw italic;
+    }
+    .confirmCartItems > p{
+        font: 300 4vw italic;
+    }
+    .confirmCartItemsContainer {
+        max-height: 50vw;
+    }
+    .confirmCartItemsContainer > div {
+        font: 400 4vw italic;
+        margin: 4vw 0;
+    }
+    .confirmCartItemsContainer > div > img{
+        width: 10vw;
+    }
+    .confirmCartItemsContainer > div > a{
+        margin:  0;
+        width: 30%;
+    }
+    .confirmCartItemsContainer > div > span{
+        font: 100 4vw italic;
+    }
+    .orderSummary{
+        padding: 8vmax;
+    }
+    .orderSummary > p{
+        font: 300 4vw italic;
+        padding: 4vw;
+    }
+    .orderSummary> div > div > p{
+        font: 300 4vw italic;
+    }
+    .orderSummary> div > div > span{
+        font: 300 4vw italic;
+        color: rgba(0, 0, 0, 0.619);
+    }
+    .orderSummaryTotal > p{
+        font: 300 4vw italic;
+    }
+    .orderSummaryTotal > span{
+        font: 300 4vw italic;
+    }
+    .orderSummary > button{
+        padding: 2vw 4vw;
+        margin: 4vw auto;
+        font: 300 4vw italic;
+    }
+
+}

@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import "./loginSignUp.css";
 import Loader from "../layout/Loader/Loader";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import MailOutlinedIcon from "@mui/icons-material/MailOutlined";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import FaceIcon from "@mui/icons-material/AccountCircle";
@@ -10,6 +10,7 @@ import { clearError, login, register } from "../../actions/userActions";
 import { useAlert } from "react-alert";
 
 const LoginSignUp = () => {
+  const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -64,6 +65,7 @@ const LoginSignUp = () => {
       setuser({ ...user, [e.target.name]: e.target.value });
     }
   };
+  const redirect = location.search ? location.search.split("=")[1] : "/account";
 
   useEffect(() => {
     if (error) {
@@ -71,9 +73,10 @@ const LoginSignUp = () => {
       dispatch(clearError());
     }
     if (isAuthenticated) {
-      navigate("/account");
+      const redirectPath = redirect === "shipping" ? "/shipping" : redirect;
+      navigate(redirectPath);
     }
-  }, [dispatch, error, alert, navigate, isAuthenticated]);
+  }, [dispatch, error, alert, navigate, isAuthenticated, redirect]);
 
   const switchTabs = (e, tab) => {
     if (tab === "login") {

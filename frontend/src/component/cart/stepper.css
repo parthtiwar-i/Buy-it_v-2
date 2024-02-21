@@ -1,0 +1,11 @@
+.MuiStepConnector-line {
+  display: none !important;
+}
+.MuiStepConnector-root {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.562);
+}
+.MuiStepConnector-active,
+.MuiStepConnector-complete {
+  background-color: #0ee499;
+}
