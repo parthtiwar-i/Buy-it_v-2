@@ -18,7 +18,7 @@ import UpdateProfile from "./component/user/UpdateProfile";
 import UpdatePassword from "./component/user/UpdatePassword";
 import ForgotPassword from "./component/user/ForgotPassword";
 import ResetPassword from "./component/user/ResetPassword";
-import Cart from "./component/cart/cart";
+import Cart from "./component/cart/Cart";
 import Shipping from "./component/cart/Shipping";
 import ConfirmOrders from "./component/cart/ConfirmOrders";
 import axios from "axios";
