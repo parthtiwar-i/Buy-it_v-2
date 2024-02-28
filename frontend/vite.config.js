@@ -7,10 +7,9 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:3000",
+        target: "https://buy-it-v-2.onrender.com/",
         changeOrigin: true,
-        secure: false,
-        ws : true
+        // secure: false,
       },
     },
   },
