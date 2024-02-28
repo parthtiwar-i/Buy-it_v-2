@@ -1,1 +1,12 @@
-{ "routes": [{ "src": "/[^.]+", "dest": "/", "status": 200 }] }
+{
+    "rewrites" : [
+        {
+            "source": "/api/(.*)",
+            "destination": "https://buy-it-v-2.onrender.com/api/$1"
+        },
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
+        }
+    ]
+}

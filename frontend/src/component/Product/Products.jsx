@@ -15,7 +15,7 @@ const Products = () => {
   const alert = useAlert();
   const [currentPage, setcurrentPage] = useState(1);
   const [category, setcategory] = useState();
-  const [price, setprice] = useState([0, 100000]);
+  const [price, setprice] = useState([0, 1000000]);
   const [rating, setrating] = useState(0);
   const { keyword } = useParams();
   const dispatch = useDispatch();
@@ -59,7 +59,7 @@ const Products = () => {
             <Slider
               size="medium"
               // aria-aria-label="Price"
-              step={1000}
+              step={10000}
               min={0}
               max={100000}
               // getAriaLabel={() => "Temperature range"}
