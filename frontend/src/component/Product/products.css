@@ -33,7 +33,7 @@
 .caatgory-filter{
     padding: 0%;
 }
-.catagory-link{
+.category-link{
     list-style-type: none;
     margin: 0.4vmax;
     font: 400 8 italic;
@@ -41,7 +41,7 @@
     cursor: pointer;
     transition: all 0.5s;
 }
-.catagory-link:hover{
+.category-link:hover{
     color: black;
 }
 

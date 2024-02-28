@@ -1,4 +1,4 @@
-import React, { Fragment, useRef } from "react";
+import React, { Fragment, useEffect, useRef } from "react";
 import CheckoutSteps from "./CheckoutSteps";
 import {
   CardNumberElement,
@@ -17,11 +17,14 @@ import { Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useAlert } from "react-alert";
 import { useNavigate } from "react-router-dom";
+import { clearError, createOrder } from "../../actions/orderAction";
+import { resetCart } from "../../actions/cartActions";
 
 const Payment = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.user);
+  const { error } = useSelector((state) => state.newOrder);
   const { shippingInfo, cartItems } = useSelector((state) => state.cart);
   const alert = useAlert();
   const stripe = useStripe();
@@ -31,6 +34,15 @@ const Payment = () => {
   const payBtn = useRef(null);
   const paymentData = {
     amount: Math.round(orderInfo.totalPrice * 100),
+  };
+
+  const order = {
+    shippingInfo,
+    orderItems: cartItems,
+    itemsPrice: orderInfo.subTotal,
+    taxPrice: orderInfo.tax,
+    shippingPrice: orderInfo.shippingCharges,
+    totalPrice: orderInfo.totalPrice,
   };
 
   const submitaHandler = async (e) => {
@@ -73,6 +85,11 @@ const Payment = () => {
         alert.error(result.error.message);
       } else {
         if (result.paymentIntent.status === "succeeded") {
+          order.paymentInfo = {
+            id: result.paymentIntent.id,
+            status: result.paymentIntent.status,
+          };
+          dispatch(createOrder(order));
           navigate("/success");
         } else {
           alert.error(
@@ -80,11 +97,20 @@ const Payment = () => {
           );
         }
       }
+      dispatch(resetCart());
     } catch (error) {
       payBtn.current.disabled = false;
       alert.error(error.response.data.message);
     }
   };
+
+  useEffect(() => {
+    if (error) {
+      alert.error(error);
+      dispatch(clearError());
+    }
+  }, [error, dispatch]);
+
   return (
     <Fragment>
       <MetaData title={"Payment"} />

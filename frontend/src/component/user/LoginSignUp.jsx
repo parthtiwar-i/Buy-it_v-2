@@ -3,8 +3,8 @@ import "./loginSignUp.css";
 import Loader from "../layout/Loader/Loader";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import MailOutlinedIcon from "@mui/icons-material/MailOutlined";
-import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import FaceIcon from "@mui/icons-material/AccountCircle";
+import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import { useDispatch, useSelector } from "react-redux";
 import { clearError, login, register } from "../../actions/userActions";
 import { useAlert } from "react-alert";
@@ -179,7 +179,6 @@ const LoginSignUp = () => {
                   <img src={avatarPreview} alt="Avatar Preview" />
                   <input
                     type="file"
-                    required
                     name="avatar"
                     accept="image/*"
                     onChange={registerDataChange}

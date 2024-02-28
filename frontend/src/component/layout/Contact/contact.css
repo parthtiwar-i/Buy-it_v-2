@@ -1,0 +1,13 @@
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 90vh;
+  padding: 2vmax;
+  padding-top: 8vmax;
+}
+
+.contact > p {
+  font: 300 1vmax cursive;
+}

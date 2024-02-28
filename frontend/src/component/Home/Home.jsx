@@ -1,12 +1,12 @@
 import React, { Fragment, useEffect } from "react";
 import "./home.css";
 import ProductCard from "./ProductCard";
-import MouseIcon from "@mui/icons-material/MouseOutlined";
 import MetaData from "../layout/MetaData";
 import { useSelector, useDispatch } from "react-redux";
 import { clearError, getProduct } from "../../actions/productActions";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
+import front from "./assets/homeVector.svg";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -18,7 +18,7 @@ const Home = () => {
   useEffect(() => {
     if (error) {
       alert.error(error);
-      dispatch(clearError())
+      dispatch(clearError());
     }
     dispatch(getProduct());
   }, [dispatch, error, alert]);
@@ -29,17 +29,22 @@ const Home = () => {
         <Loader />
       ) : (
         <>
-          <MetaData title="Parth- Tiwari" />
+          <MetaData title="Buy-It" />
           <div className="HomePage">
-            <h1>Explore the NEED!</h1>
-            <p>welcome to Buy-it</p>
-            <a href="#container">
-              <button>
-                Scroll <MouseIcon />{" "}
-              </button>
-            </a>
+            <div className="left">
+              <h1>Find the NEED!</h1>
+              <p>welcome to Buy-it</p>
+              <a href="#container">
+                <button>
+                  Explore 
+                </button>
+              </a>
+            </div>
+            <div className="right">
+              <img src={front} alt="" />
+            </div>
           </div>
-          <h2 className="product_heading">Products You Would Love!</h2>
+          <h2 className="product_heading">Featured! You Would Love!</h2>
           <div className="container" id="container">
             {products &&
               products.map((product) => (

@@ -26,7 +26,7 @@ const Profile = () => {
             <div>
               <h1>My Profile</h1>
               {user.avatar && (
-                <img src={user.avatar.image_url} alt={user.name} />
+                <img src={user.avatar ? user.avatar.image_url : "./Profile"} alt={user.name} />
               )}
               <Link to={"/me/update"}>Edit Profile</Link>
             </div>

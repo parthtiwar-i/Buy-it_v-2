@@ -134,8 +134,6 @@ exports.resetPassword = catchAsyncError(async (req, res, next) => {
     );
   }
 
-  console.log(req.body.password);
-
   user.password = req.body.password;
   user.resetPasswordExpire = undefined;
   user.resetPasswordToken = undefined;
@@ -266,13 +264,18 @@ exports.updateUserRole = catchAsyncError(async (req, res, next) => {
 
 exports.deleteUser = catchAsyncError(async (req, res, next) => {
   const user = await User.findById(req.params.id);
-  // will add avatars later using cloudary for deleting
+
   if (!user) {
     return next(
       new ErrorHandler("User doesnt exist with id " + req.params.id, 400)
     );
   }
-  console.log(user);
+
+  if (req.body.avatar != " ") {
+    const user = await User.findById(req.user.id);
+    imageId = user.avatar.public_id;
+    await cloudinary.v2.uploader.destroy(imageId);
+  }
   await user.deleteOne();
 
   res.status(200).json({

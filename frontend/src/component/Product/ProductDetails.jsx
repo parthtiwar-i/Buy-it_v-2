@@ -2,14 +2,26 @@ import React, { Fragment, useEffect, useState } from "react";
 import "./productDetails.css";
 import Carousel from "react-material-ui-carousel";
 import { useSelector, useDispatch } from "react-redux";
-import { clearError, getProductDetails } from "../../actions/productActions";
+import {
+  clearError,
+  getProductDetails,
+  newReview,
+} from "../../actions/productActions";
 import { useParams } from "react-router-dom";
-import ReactStars from "react-rating-stars-component";
 import ReviewCard from "./reviewCard";
 import Loader from "../layout/Loader/Loader";
 import { useAlert } from "react-alert";
 import MetaData from "../layout/MetaData";
 import { addItemToCart } from "../../actions/cartActions";
+import {
+  Button,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Rating,
+} from "@mui/material";
+import { NEW_REVIEW_RESET } from "../../constants/productConstants";
 
 const ProductDetails = () => {
   const { id } = useParams();
@@ -18,6 +30,27 @@ const ProductDetails = () => {
   const { product, loading, error } = useSelector(
     (state) => state.productDetails
   );
+  const { success, error: reviewError } = useSelector(
+    (state) => state.newReview
+  );
+
+  const [open, setOpen] = useState(false);
+  const [rating, setRating] = useState(0);
+  const [comment, setComment] = useState(" ");
+
+  const submitReviewToggle = () => {
+    open ? setOpen(false) : setOpen(true);
+  };
+
+  const reviewSubmitHandler = () => {
+    const myForm = new FormData();
+    myForm.set("rating", rating);
+    myForm.set("comment", comment);
+    myForm.set("productId", id);
+
+    dispatch(newReview(myForm));
+    setOpen(false);
+  };
   const [quantity, setQuantity] = useState(1);
   const increaseQuantity = () => {
     let qty = parseInt(quantity) + 1;
@@ -34,7 +67,6 @@ const ProductDetails = () => {
 
   const handleAddToCart = () => {
     dispatch(addItemToCart(product._id, quantity));
-    alert.success("Item Added to cart");
   };
 
   useEffect(() => {
@@ -42,8 +74,18 @@ const ProductDetails = () => {
       alert.error(error);
       dispatch(clearError);
     }
+    if (reviewError) {
+      alert.error(reviewError);
+      dispatch(clearError);
+    }
+    if (success) {
+      alert.success("New Review Submitted");
+      dispatch({
+        type: NEW_REVIEW_RESET,
+      });
+    }
     dispatch(getProductDetails(id));
-  }, [dispatch, id, error, alert]);
+  }, [dispatch, id, error, alert, success, reviewError]);
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -52,12 +94,10 @@ const ProductDetails = () => {
   };
 
   const options = {
-    value: product.rating,
-    edit: false,
-    color: "rgba(20,20,20,0.1)",
-    activeColor: "tomato",
-    size: window.innerWidth < 600 ? 20 : 25,
-    isHalf: true,
+    value: product.ratings,
+    size: "large",
+    precision: 0.5,
+    readOnly: true,
   };
 
   return (
@@ -112,8 +152,9 @@ const ProductDetails = () => {
                 {/* <p>{product._id}</p> */}
               </div>
               <div className="detailBlock-2">
-                <ReactStars {...options} />
-                <span>({product.numOfReviews})</span>
+                <Rating {...options} />
+
+                <span> ({product.numOfReviews} )</span>
               </div>
               <div className="detailBlock-3">
                 <h1>{`₹${product.price}`}</h1>
@@ -123,7 +164,12 @@ const ProductDetails = () => {
                     <input type="number" readOnly value={quantity} />
                     <button onClick={increaseQuantity}>+</button>
                   </div>
-                  <button onClick={handleAddToCart}>Add To Cart</button>
+                  <button
+                    disabled={product.stock < 1 ? true : false}
+                    onClick={handleAddToCart}
+                  >
+                    Add To Cart
+                  </button>
                 </div>
                 <p>
                   Status :
@@ -137,12 +183,40 @@ const ProductDetails = () => {
                   <h3>Description:</h3>
                   <p>{product.description}</p>
                 </div>
-                <button>Add Reviews</button>
+                <button onClick={submitReviewToggle}>Add Reviews</button>
               </div>
             </div>
           </div>
 
           <h3 className="Review">Reviews</h3>
+          <Dialog
+            aria-labelledby="simple_diaglog-title"
+            open={open}
+            onClose={submitReviewToggle}
+          >
+            <DialogTitle>Submit Review</DialogTitle>
+            <DialogContent className="submitDialog">
+              <Rating
+                onChange={(e) => setRating(e.target.value)}
+                value={rating}
+                size="large"
+              />
+              <textarea
+                className="submitDialogTextArea"
+                cols="30"
+                rows="5"
+                value={comment}
+                onChange={(e) => setComment(e.target.value)}
+              ></textarea>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={submitReviewToggle} color="secondary">
+                Cancle
+              </Button>
+              <Button onClick={reviewSubmitHandler}>Submit</Button>
+            </DialogActions>
+          </Dialog>
+
           {product.reviews && product.reviews[0] ? (
             <div className="product-reviews">
               {product.reviews.map((review) => (

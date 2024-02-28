@@ -1,0 +1,18 @@
+.aboutUs {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 90vh;
+  padding: 2vmax;
+  padding-top: 8vmax;
+}
+
+h1 {
+  font: 400 4vmax italic;
+}
+.aboutUs > div > p {
+  width: 60%;
+  margin: 0 auto;
+  font: 300 1.5vmax cursive;
+}

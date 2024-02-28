@@ -144,6 +144,18 @@
   font: 200 1.1vmax "roboto";
 }
 
+.submitDialog {
+  display: flex;
+  flex-direction: column;
+}
+.submitDialogTextArea{
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.475);
+  margin: 1vmax 0;
+  padding: 1vmax;
+  font: 300 1.3vmax cursive;
+}
+
 .detailBlock-4 > button {
   padding: 0.5vmax 2vmax;
   border: none;
@@ -160,21 +172,22 @@
   transform: scale(1.1);
   background-color: rgb(59, 59, 59);
 }
-.product-reviews{
+.product-reviews {
   display: flex;
   overflow: auto;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
 }
 
-.Review{
+.Review {
   text-align: center;
   width: 20vmax;
   margin: 3vmax auto;
-  font: 400 3vmax 'roboto';
+  font: 400 3vmax "roboto";
   border-bottom: 1px solid grey;
 }
-.reviewCard{
+.reviewCard {
+  box-sizing: border-box;
   flex: none;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.74);
   width: 30vmax;
@@ -185,25 +198,19 @@
   padding: 3vmax;
 }
 
-.reviewCard>img{
+.reviewCard > img {
   width: 4vmax;
 }
-.reviewCard > p{
+.reviewCard > p {
   color: grey;
   font: 300 1vmax italic;
 }
-.noReviews{
-  color:rgba(100, 98, 98, 0.687);
+.noReviews {
+  color: rgba(100, 98, 98, 0.687);
   width: fit-content;
   margin: 3vmax auto;
   font: 400 1.5vmax italic;
 }
-
-
-
-
-
-
 
 @media screen and (max-width: 600px) {
   .productDetails {
@@ -258,7 +265,12 @@
     font: 200 2.5vmax "roboto";
   }
   .detailBlock-4 > button {
-      padding: 1.5vmax 5vmax;
-      font-size: 2vmax;   
+    padding: 1.5vmax 5vmax;
+    font-size: 2vmax;
+  }
+  .reviewCard > p {
+    color: grey;
+    font: 300 2vmax italic;
+    overflow-wrap: anywhere;
   }
 }

@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import "./style.css";
-import { Outlet, useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import logo from "./assets/by-logo-white.svg";
-import user from "./assets/user_acc.png";
 import { useSelector } from "react-redux";
 import ShoppingCartRoundedIcon from "@mui/icons-material/ShoppingCartRounded";
 import SearchIcon from "@mui/icons-material/Search";
@@ -12,6 +11,7 @@ const links = [
   { link: "/products", name: "Products" },
   { link: "/about", name: "about" },
   { link: "/contact", name: "Contact" },
+  { link: "/orders", name: "Orders" },
 ];
 
 const Header = () => {
@@ -59,10 +59,10 @@ const Header = () => {
           <Link to={"/products"}>
             <p className="link">Product</p>
           </Link>
-          <Link>
+          <Link to={"/about"} >
             <p className="link">About</p>
           </Link>
-          <Link>
+          <Link to={"/contact"} >
             <p className="link">Contact</p>
           </Link>
         </div>

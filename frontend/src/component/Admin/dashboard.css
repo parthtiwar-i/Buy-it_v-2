@@ -1,0 +1,132 @@
+.dashboard {
+  display: grid;
+  width: 100vw;
+  max-width: 100%;
+  grid-template-columns: 1fr 5fr;
+  position: absolute;
+}
+
+.dashboardContainer {
+  border-left: 1px solid rgba(0, 0, 0, 0.689);
+  padding: 2vmax 0;
+  background-color: #e5ecf3;
+  min-height: 100vh;
+}
+
+.dashboardContainer > h1 {
+  color: rgba(0, 0, 0, 0.733);
+  font: 300 2.5vmax "roman";
+  text-align: center;
+  width: 50%;
+  padding: 1.5rem;
+  padding-top: 8vmax;
+  margin: auto;
+  border-bottom: 2px solid grey;
+}
+
+.dashboardSummary {
+  margin: 2rem 0;
+}
+
+.dashboardSummary > div {
+  display: flex;
+  background-color: #e5ecf3;
+  justify-content: space-evenly;
+}
+.dashboardSummary > div > p {
+  background-color: rgb(66 138 147);
+  color: white;
+  font: 300 1.5vmax italic;
+  text-align: center;
+  padding: 0.5rem;
+  width: 100%;
+  margin: 0 2rem;
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px 6px rgb(0 0 0 / 38%);
+  border: 1px solid darkcyan;
+}
+.dashboardSummaryBox2 > a {
+  color: rgba(0, 0, 0, 0.607);
+  width: 25%;
+  font: 300 2vmax italic;
+  text-align: end;
+  background-color: white;
+  text-decoration: none;
+  padding: 2rem;
+  margin: 2rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  flex-direction: column;
+  box-shadow: -2px 2px 7px 0px rgb(167 212 232);
+  position: relative;
+}
+.dashboardSummaryBox2 > a > div {
+  position: absolute;
+}
+.dashboardSummaryBox2 > a > hr {
+  width: 100%;
+  color: #e0e4e9;
+  margin-top: 1vmax ;
+}
+.topPopDiv {
+  color: white;
+  position: absolute;
+  padding: 1vmax;
+  background-color: #37373d;
+  border-radius: 6px;
+  top: -35px;
+  left: 14px;
+  width: 5vmax;
+  height: 5vmax;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.topPopDiv > svg {
+  font-size: 2vmax;
+}
+.dashboardSummaryBox2 > a:nth-child(2) > div {
+  background-color: #368fed;
+}
+.dashboardSummaryBox2 > a:nth-child(3) > div {
+  background-color: #e3306e;
+}
+
+.lineChart {
+  width: 40%;
+  margin: auto;
+}
+
+.doughnutChart {
+  width: 20%;
+  margin: auto;
+}
+
+.charts{
+  display: flex;
+}
+@media screen and (max-width: 600px) {
+  .dashboard {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboardContainer {
+    border-left: none;
+  }
+
+  .dashboardSummary > div > p {
+    margin: 0;
+  }
+
+  .dashboardSummaryBox2 > a {
+    padding: 0.5rem;
+    margin: 1rem;
+    font: 300 0.9rem "Roboto";
+  }
+}
+
+
+
+

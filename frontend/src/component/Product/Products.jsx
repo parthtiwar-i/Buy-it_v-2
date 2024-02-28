@@ -9,13 +9,13 @@ import { Pagination, Slider, Typography } from "@mui/material";
 import { useAlert } from "react-alert";
 import MetaData from "../layout/MetaData";
 
-const catagories = ["pants", "shoes", "laptop", "Shirt", "Phone"];
+const categories = ["pants", "shoes", "laptop", "Shirt", "Phone"];
 
 const Products = () => {
   const alert = useAlert();
   const [currentPage, setcurrentPage] = useState(1);
-  const [catagory, setcatagory] = useState();
-  const [price, setprice] = useState([0, 25000]);
+  const [category, setcategory] = useState();
+  const [price, setprice] = useState([0, 100000]);
   const [rating, setrating] = useState(0);
   const { keyword } = useParams();
   const dispatch = useDispatch();
@@ -35,8 +35,8 @@ const Products = () => {
       alert.error(error);
       dispatch(clearError());
     }
-    dispatch(getProduct(keyword, currentPage, price, catagory, rating));
-  }, [dispatch, keyword, currentPage, price, catagory, rating,alert , error]);
+    dispatch(getProduct(keyword, currentPage, price, category, rating));
+  }, [dispatch, keyword, currentPage, price, category, rating,alert , error]);
 
   const setCurrentPageNo = (e, page) => {
     setcurrentPage(page);
@@ -57,26 +57,26 @@ const Products = () => {
           <div className="filterProduct">
             <Typography>Price</Typography>
             <Slider
-              size="small"
+              size="medium"
               // aria-aria-label="Price"
-              step={500}
+              step={1000}
               min={0}
-              max={25000}
+              max={100000}
               // getAriaLabel={() => "Temperature range"}
               value={price}
               onChange={priceHandler}
               valueLabelDisplay="auto"
               getAriaValueText={() => "Price"}
             />
-            <Typography>Catagory</Typography>
-            <ul className="catagory-filter">
-              {catagories.map((catagory) => (
+            <Typography>Category</Typography>
+            <ul className="category-filter">
+              {categories.map((category) => (
                 <ul
-                  key={catagory}
-                  className="catagory-link"
-                  onClick={() => setcatagory(catagory)}
+                  key={category}
+                  className="category-link"
+                  onClick={() => setcategory(category)}
                 >
-                  {catagory}
+                  {category}
                 </ul>
               ))}
             </ul>

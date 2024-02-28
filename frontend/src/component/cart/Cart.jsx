@@ -4,11 +4,11 @@ import CartItem from "./CartItem";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart, removeItemFromCart } from "../../actions/cartActions";
 import { useAlert } from "react-alert";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import RemoveShoppingCartRoundedIcon from "@mui/icons-material/RemoveShoppingCartRounded";
 
 const Cart = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
   const alert = useAlert();
   const dispatch = useDispatch();
   const { cartItems } = useSelector((state) => state.cart);
@@ -27,9 +27,9 @@ const Cart = () => {
     dispatch(removeItemFromCart(id));
     alert.success("Item removed from cart");
   };
-  const checkOutHandler = ()=>{
-    navigate("/login?redirect=shipping")
-  }
+  const checkOutHandler = () => {
+    navigate("/login?redirect=shipping");
+  };
   return (
     <Fragment>
       {cartItems.length == 0 ? (
@@ -80,7 +80,8 @@ const Cart = () => {
               <div className="grossTotalBox">
                 <p>Gross Total</p>
                 <p>{`₹${cartItems.reduce(
-                  (acc, item) => ( acc + item.quantity * item.price), 0
+                  (acc, item) => acc + item.quantity * item.price,
+                  0
                 )}`}</p>
               </div>
               <div></div>
