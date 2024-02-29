@@ -42,7 +42,7 @@
   flex: 1 1 0;
 }
 .left > h1 {
-  font: 400 3vmax italic;
+  font: 400 4vmax cursive;
 }
 .left > p {
   font: 300 2vmax cursive;
@@ -136,8 +136,14 @@
     flex-direction: column;
   }
   .left > h1 {
-    font: 600 5vmax italic;
+    font: 600 5vmax cursive;
     padding-bottom: 35vmax;
+  }
+  .left > p {
+    font: 300 4vmax cursive;
+  }
+  .left > a > button {
+    font: 300 2vmax cursive;
   }
   .right {
     width: -webkit-fill-available;

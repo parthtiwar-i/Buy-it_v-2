@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart, removeItemFromCart } from "../../actions/cartActions";
 import { useAlert } from "react-alert";
 import { Link, useNavigate } from "react-router-dom";
-import RemoveShoppingCartRoundedIcon from "@mui/icons-material/RemoveShoppingCartRounded";
+import EmptyCart from "./assets/emptycart.png";
 
 const Cart = () => {
   const navigate = useNavigate();
@@ -34,8 +34,9 @@ const Cart = () => {
     <Fragment>
       {cartItems.length == 0 ? (
         <div className="noProduct">
-          <RemoveShoppingCartRoundedIcon fontSize="large" />
-          <h1>"No Items In The Cart SHOP NOW!"</h1>
+          <img src={EmptyCart} alt="" />
+          <h1>"No Items In The Cart!!</h1>
+          <h1> SHOP NOW!"</h1>
           <Link to={"/products"}>View Products</Link>
         </div>
       ) : (

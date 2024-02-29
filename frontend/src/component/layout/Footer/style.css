@@ -1,66 +1,73 @@
-*{
-    margin: 0;
-    padding: 0;    
+* {
+  margin: 0;
+  padding: 0;
 }
 
-footer{
-    padding: 2rem;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: gray;
-    flex-wrap: wrap;
+footer {
+  padding: 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: gray;
+  flex-wrap: wrap;
 }
 
-.left_footer{
-    flex: 0 0 30%;
-    padding: 1rem 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 1rem;
-    align-items: center;
+.left_footer {
+  flex: 0 0 30%;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
 }
-.left_footer > h1{
-    font-size: 2vmax;
+.left_footer > h1 {
+  font-size: 2vmax;
 }
-.android,.ios{
-    width: 10vmax;
-}
-
-.mid_footer{
-    flex: 0 0 30%;
-    padding: 1rem 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-}
-.mid_footer > img{
-    width: 10rem;
+.android,
+.ios {
+  width: 5vmax;
 }
 
-.right_footer{
-    flex: 0 0 30%;
-    padding: 1rem 0;   
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.mid_footer {
+  flex: 0 0 30%;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
 }
-.right_footer > .social > img{
-    width: 2rem;
-}
-
-.social{
-    padding: 1rem 0 ;
-    display: flex;
-    gap: 2rem;
+.mid_footer > img {
+  width: 10rem;
 }
 
-.social_icon:hover{
-    cursor: pointer;
-    transition: all 0.5s;
-    scale: 1.2;   
+.right_footer {
+  flex: 0 0 30%;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.right_footer > .social > a > img {
+  width: 2rem;
+}
+
+.social {
+  padding: 1rem 0;
+  display: flex;
+  gap: 2rem;
+}
+
+.social_icon:hover {
+  cursor: pointer;
+  transition: all 0.5s;
+  scale: 1.2;
+}
+
+@media screen and (max-width: 600px) {
+  footer {
+    display: grid;
+  }
 }

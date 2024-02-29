@@ -10,8 +10,12 @@ const Contact = () => {
           Have questions or concerns? We're here to help! Feel free to reach out
           to our customer support team for assistance.
         </p>
-        <p>Email: tiwariparth26@gmail.com</p>
-        <p>Phone: 1-800-123-4567</p>
+        <p>
+          <a className="mailBtn" href="mailto:tiwariparth26@gmail.com">
+            Contact: tiwariparth26@gmail.com
+          </a>
+        </p>
+        <p>Phone:1234567890</p>
       </div>
     </Fragment>
   );

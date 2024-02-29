@@ -1,14 +1,15 @@
 .noProduct {
-  height: 90vh;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 3vmax;
 }
-.noProduct > svg{
-  font-size: 6vmax;
+.noProduct > img {
+  width: 30vmax;
 }
-.noProduct > a{
+.noProduct > a {
   margin: 2vmax 0;
   border: 2px solid grey;
   border-radius: 5px;
@@ -103,6 +104,9 @@
 }
 
 @media screen and (max-width: 700px) {
+  .noProduct > a {
+    font: 300 2.5vmax italic;
+  }
   .cartHeader {
     padding-top: 9vmax;
     font: 300 2.5vmax italic;

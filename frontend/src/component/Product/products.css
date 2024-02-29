@@ -16,18 +16,30 @@
     flex-wrap: wrap;
     padding: 0 5vmax;
     justify-content: center;
+    transition: all 0.5s;
 }
 .pagination{
     width: fit-content;
     margin: 2vmax auto;
 }
-.filterProduct{
-    box-shadow: 5px 5px 5px rgba(38, 38, 38, 0.578);
-    width: 10vmax;
+.filter{
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid grey;
+    border-radius: 5px;
     padding: 1vmax;
-    position: absolute;
-    top: 10vmax;
-    left: 1vmax;
+
+}
+.hide{
+    display: none;
+}
+.filterProduct{
+    transition: all 0.5s;
+    box-shadow: 5px 5px 5px rgba(38, 38, 38, 0.578);
+    width: 20vmax;
+    padding: 1vmax;
 }
 
 .caatgory-filter{
@@ -56,5 +68,8 @@
     .ProductHeading {
      padding-top: 15vmax;
      font: 400 5vmax italic;
+    }
+    .product-container{
+        padding: 0;
     }
 }
