@@ -36,7 +36,7 @@ const Home = () => {
               <p>welcome to Buy-it</p>
               <a href="#container">
                 <button>
-                  Explore 
+                  Grab Your Deal
                 </button>
               </a>
             </div>

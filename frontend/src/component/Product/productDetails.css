@@ -39,9 +39,15 @@
 }
 
 .imageStrip {
-  justify-content: center;
+  justify-content: start;
   display: flex;
   height: 10vh;
+  overflow-x: auto;
+  justify-content: center;
+  width: 100%;
+  overflow-x: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .thumbnail {
@@ -148,7 +154,7 @@
   display: flex;
   flex-direction: column;
 }
-.submitDialogTextArea{
+.submitDialogTextArea {
   outline: none;
   border: 1px solid rgba(0, 0, 0, 0.475);
   margin: 1vmax 0;
@@ -217,6 +223,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 1.5vmax;
+    padding-top: 11vmax;
   }
   .carouselContainer {
     border-bottom: none;
@@ -270,7 +278,7 @@
   }
   .reviewCard > p {
     color: grey;
-    font: 300 2vmax italic;
+    font: 300 2.5vmax italic;
     overflow-wrap: anywhere;
   }
 }
