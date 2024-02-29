@@ -72,7 +72,7 @@
   box-sizing: border-box;
   border: 1px solid rgba(0, 0, 0, 0.548);
   border-radius: 4px;
-  font: 300 1vmax cursive;
+  font: 300 1vmax italic;
   outline: none;
 }
 .loginForm > div > svg,
@@ -110,7 +110,7 @@
   margin: 0;
   border: none;
   transition: all 0.5s;
-  font: 300 1vmax cursive;
+  font: 300 1vmax italic;
   padding: 0 1vmax;
   color: rgba(0, 0, 0, 0.527);
   background-color: rgb(231, 231, 231);
@@ -166,7 +166,7 @@
   .loginForm > div > input,
   .signUpForm > div > input {
     padding: 2vmax 5vmax;
-    font: 300 2.5vmax cursive;
+    font: 300 2.5vmax italic;
   }
   .loginForm > div > svg , 
   .signUpForm > div > svg{
@@ -181,10 +181,10 @@
   }
   #signUpImage > input::file-selector-button{
     height: 6vh;
-    font: 400 2vmax cursive;
+    font: 400 2vmax italic;
   }
   .loginBtn,.signUpBtn{
     padding: 2vmax 0 ;
-    font: 500 2.5vmax cursive;
+    font: 500 2.5vmax italic;
   }
 }
