@@ -1,3 +1,4 @@
 .env
 node_modules
 backend/config/config.env
+parth-backend.pem
