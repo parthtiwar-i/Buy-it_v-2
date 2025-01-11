@@ -9,7 +9,7 @@ const app = express();
 const allowedOrigins = [
   "https://buyit.parthtiwari.xyz", //frontend domain
   "http://localhost:3000", // For local development, optional
-  "http://buy-it-eight.vercel.app",
+  "https://buy-it-eight.vercel.app",
 ];
 
 const corsOptions = {
