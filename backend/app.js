@@ -3,8 +3,28 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const dotenv = require("dotenv");
 const fileUploder = require("express-fileupload");
+const cors = require("cors");
 const app = express();
+
+const allowedOrigins = [
+  "https://buyit.parthtiwari.xyz", //frontend domain
+  "http://localhost:3000", // For local development, optional
+  "http://buy-it-eight.vercel.app",
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.includes(origin) || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true, // If using cookies/authentication
+};
+
 const errorMiddleware = require("./middleware/error");
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(fileUploder());
